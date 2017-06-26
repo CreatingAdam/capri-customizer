@@ -48,7 +48,7 @@ $(function() {
 		var componentId = "#" + component;
 		var color = $(this).attr("data-color");
 		var imagePathPartial = [currModel, currSize, component, color].join("/");
-		var image = "url(img/" + imagePathPartial + ".png)";
+		var image = color == "none" ? "none" : "url(img/" + imagePathPartial + ".png)";
 
 		// Set new image for component
 		$(camperId).children(componentId).css("background-image", image);
