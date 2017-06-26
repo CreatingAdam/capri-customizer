@@ -6,7 +6,7 @@ $(function() {
 	var currSize = "";
 	var prevModel = "";
 	var PrevSize = "";
-	var darkColors = ["black", "charoal", "blue", "green", "maroon"];
+	var darkColors = ["black", "charcoal", "blue", "green", "maroon"];
 
 	// Initialize Retreat - DEMO ONLY!!!
 	$("#retreat").children("#model").css("background-image", "url(img/retreat/retreat-mid/camper.png)");
@@ -52,6 +52,19 @@ $(function() {
 
 		// Set new image for component
 		$(camperId).children(componentId).css("background-image", image);
+
+		// Adjust any related images for some models and sizes
+		switch (currModel) {
+			case "cowboy":
+				// Set decal based on stripe color
+				if (component == "stripes") {
+					var cowboyDecalPath = "url(img/cowboy/" + currSize + "/decal/";
+					var i = darkColors.indexOf(color);
+					cowboyDecalPath = i >= 0 ? cowboyDecalPath + "white.png)" : cowboyDecalPath + "black.png)"
+					$(camperId).children("#decal").css("background-image", cowboyDecalPath);
+				}
+				break;
+		}
 	});
 
 	function initializeCustomizer() {
